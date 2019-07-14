@@ -48,7 +48,7 @@ const generateShipTwoPosition = (initialPosition, orientation) => {
   if (orientation < 0.5) {
     secondPosition = initialPosition + 1
     thirdPosition = secondPosition + 1
-    shipOne = {
+    shipTwo = {
       [initialPosition]: true,
       [secondPosition]: true,
       [thirdPosition]: true,
@@ -57,7 +57,7 @@ const generateShipTwoPosition = (initialPosition, orientation) => {
   } else {
     secondPosition = initialPosition + 7
     thirdPosition = secondPosition + 7
-    shipOne = {
+    shipTwo = {
       [initialPosition]: true,
       [secondPosition]: true,
       [thirdPosition]: true,
@@ -69,10 +69,16 @@ const generateShipTwoPosition = (initialPosition, orientation) => {
 const generateShipTwo = () => {
   const orientation = Math.random()
   const initialPosition = Math.floor(Math.random() * 49) // Create a random number between 0 and 49
-
-  while (!Object.keys(shipTwo).includes(Object.keys(shipOne)))
-
   generateShipTwoPosition(initialPosition, orientation)
+  console.log("Object.keys: ", Object.keys(shipTwo))
+  console.log("Object.keys.includes: ", Object.keys(shipTwo).includes('6'))
+  for (let position of Object.keys(shipOne)) {
+
+  }
+  // while (!Object.keys(shipTwo).includes(Object.keys(shipOne))) {
+  //   generateShipTwoPosition(initialPosition, orientation)
+  // } //Make sure the first ship cant have the same numbers has the second
+
 }
 
 
