@@ -35,6 +35,9 @@ let shipFive = {
   lives: 2,
 }
 
+let playerOneShips = [];
+let playerTwoShips = [];
+
 
 const generateShipOnePosition = (initialPosition, orientation) => {
   let secondPosition;
@@ -212,17 +215,28 @@ const generateShipFive = () => {
   do {
     const initialPosition = (Math.floor(Math.random() * 49)) + 1
     generateShipFivePosition(initialPosition, orientation)
-  } while (Object.keys(shipFive).includes(shipOnePos[0]) || Object.keys(shipFive).includes(shipOnePos[1]) || Object.keys(shipFive).includes(shipOnePos[2]) || Object.keys(shipFive).includes(shipOnePos[3]) || Object.keys(shipFive).includes(shipOnePos[4]) || Object.keys(shipFive).includes(shipTwoPos[0]) || Object.keys(shipFive).includes(shipTwoPos[1]) || Object.keys(shipFive).includes(shipTwoPos[2]) || Object.keys(shipFive).includes(shipTwoPos[3]) || Object.keys(shipFive).includes(shipThreePos[0]) || Object.keys(shipFive).includes(shipThreePos[1]) || Object.keys(shipFive).includes(shipThreePos[2]) || Object.keys(shipFive).includes(shipFourPos[0]) || Object.keys(shipFive).includes(shipFourPos[1]) || (orientation >= 0.5 && Object.keys(shipFive)[1] > 49) || (orientation < 0.5 && (6 < Object.keys(shipFive)[0] && Object.keys(shipFive)[0] < 8) || (13 < Object.keys(shipFive)[0] && Object.keys(shipFive)[0] < 15) || (20 < Object.keys(shipFive)[0] && Object.keys(shipFive)[0] < 22) || (27 < Object.keys(shipFive)[0] && Object.keys(shipFive)[0] < 29) || (34 < Object.keys(shipFive)[0] && Object.keys(shipFive)[0] < 36) || (41 < Object.keys(shipFive)[0] && Object.keys(shipFive)[0] < 43) || (48 < Object.keys(shipFive)[0] && Object.keys(shipFive)[0] < 50)));
+  } while (Object.keys(shipFive).includes(shipOnePos[0]) || Object.keys(shipFive).includes(shipOnePos[1]) || Object.keys(shipFive).includes(shipOnePos[2]) || Object.keys(shipFive).includes(shipOnePos[3]) || Object.keys(shipFive).includes(shipOnePos[4]) || Object.keys(shipFive).includes(shipTwoPos[0]) || Object.keys(shipFive).includes(shipTwoPos[1]) || Object.keys(shipFive).includes(shipTwoPos[2]) || Object.keys(shipFive).includes(shipTwoPos[3]) || Object.keys(shipFive).includes(shipThreePos[0]) || Object.keys(shipFive).includes(shipThreePos[1]) || Object.keys(shipFive).includes(shipThreePos[2]) || Object.keys(shipFive).includes(shipFourPos[0]) || Object.keys(shipFive).includes(shipFourPos[1]) || Object.keys(shipFive).includes(shipFourPos[2]) || (orientation >= 0.5 && Object.keys(shipFive)[1] > 49) || (orientation < 0.5 && (6 < Object.keys(shipFive)[0] && Object.keys(shipFive)[0] < 8) || (13 < Object.keys(shipFive)[0] && Object.keys(shipFive)[0] < 15) || (20 < Object.keys(shipFive)[0] && Object.keys(shipFive)[0] < 22) || (27 < Object.keys(shipFive)[0] && Object.keys(shipFive)[0] < 29) || (34 < Object.keys(shipFive)[0] && Object.keys(shipFive)[0] < 36) || (41 < Object.keys(shipFive)[0] && Object.keys(shipFive)[0] < 43) || (48 < Object.keys(shipFive)[0] && Object.keys(shipFive)[0] < 50)));
 }
 
+const generatePlayerOneShips = () => {
+  generateShipOne()
+  generateShipTwo()
+  generateShipThree()
+  generateShipFour()
+  generateShipFive()
+  playerOneShips.push(shipOne, shipTwo, shipThree, shipFour, shipFive)
+}
 
-generateShipOne()
-generateShipTwo()
-generateShipThree()
-generateShipFour()
-generateShipFive()
-console.log("final ship one: ", shipOne)
-console.log("final ship two:", shipTwo)
-console.log("final ship three:", shipThree)
-console.log("final ship four:", shipFour)
-console.log("final ship five:", shipFive)
+const generatePlayerTwoShips = () => {
+  generateShipOne()
+  generateShipTwo()
+  generateShipThree()
+  generateShipFour()
+  generateShipFive()
+  playerTwoShips.push(shipOne, shipTwo, shipThree, shipFour, shipFive)
+}
+
+generatePlayerOneShips()
+generatePlayerTwoShips()
+console.log(playerOneShips)
+console.log(playerTwoShips)
