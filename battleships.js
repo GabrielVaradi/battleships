@@ -38,7 +38,7 @@ generateShipOnePosition = (initialPosition, orientation) => {
 
 const generateShipOne = () => {
   const orientation = Math.random()
-  const initialPosition = Math.floor(Math.random() * 49)
+  const initialPosition = (Math.floor(Math.random() * 49))+1
   generateShipOnePosition(initialPosition, orientation)
 }
 
@@ -68,13 +68,14 @@ const generateShipTwoPosition = (initialPosition, orientation) => {
 
 const generateShipTwo = () => {
   const shipOnePos = Object.keys(shipOne).splice(0, 3)
+  const orientation = Math.random()
     do {
-      const orientation = Math.random()
-      const initialPosition = Math.floor(Math.random() * 49)
+      const initialPosition = (Math.floor(Math.random() * 49)) + 1
       generateShipTwoPosition(initialPosition, orientation)
       console.log(shipTwo)
       console.log(shipOnePos[0])
-    } while (Object.keys(shipTwo).includes(shipOnePos[0]) || Object.keys(shipTwo).includes(shipOnePos[1]) || Object.keys(shipTwo).includes(shipOnePos[2]));
+      console.log(Object.keys(shipTwo)[2])
+    } while (Object.keys(shipTwo).includes(shipOnePos[0]) || Object.keys(shipTwo).includes(shipOnePos[1]) || Object.keys(shipTwo).includes(shipOnePos[2]) || (orientation >= 0.5 && Object.keys(shipTwo)[2] > 49) || (orientation < 0.5 && (5 < Object.keys(shipTwo)[0] && Object.keys(shipTwo)[0] < 8) || (12 < Object.keys(shipTwo)[0] && Object.keys(shipTwo)[0] < 15) || (19 < Object.keys(shipTwo)[0] && Object.keys(shipTwo)[0] < 22) || (26 < Object.keys(shipTwo)[0] && Object.keys(shipTwo)[0] < 29) || (33 < Object.keys(shipTwo)[0] && Object.keys(shipTwo)[0] < 36) || (40 < Object.keys(shipTwo)[0] && Object.keys(shipTwo)[0] < 43) || (47 < Object.keys(shipTwo)[0] && Object.keys(shipTwo)[0] < 50)) );
 }
 
 
