@@ -38,7 +38,7 @@ generateShipOnePosition = (initialPosition, orientation) => {
 
 const generateShipOne = () => {
   const orientation = Math.random()
-  const initialPosition = Math.floor(Math.random() * 49) // Create a random number between 0 and 49
+  const initialPosition = Math.floor(Math.random() * 49)
   generateShipOnePosition(initialPosition, orientation)
 }
 
@@ -67,25 +67,21 @@ const generateShipTwoPosition = (initialPosition, orientation) => {
 }
 
 const generateShipTwo = () => {
-  const orientation = Math.random()
-  const initialPosition = Math.floor(Math.random() * 49) // Create a random number between 0 and 49
-  generateShipTwoPosition(initialPosition, orientation)
-  console.log("Object.keys: ", Object.keys(shipTwo))
-  console.log("Object.keys.includes: ", Object.keys(shipTwo).includes('6'))
-  for (let position of Object.keys(shipOne)) {
-
-  }
-  // while (!Object.keys(shipTwo).includes(Object.keys(shipOne))) {
-  //   generateShipTwoPosition(initialPosition, orientation)
-  // } //Make sure the first ship cant have the same numbers has the second
-
+  const shipOnePos = Object.keys(shipOne).splice(0, 3)
+    do {
+      const orientation = Math.random()
+      const initialPosition = Math.floor(Math.random() * 49)
+      generateShipTwoPosition(initialPosition, orientation)
+      console.log(shipTwo)
+      console.log(shipOnePos[0])
+    } while (Object.keys(shipTwo).includes(shipOnePos[0]) || Object.keys(shipTwo).includes(shipOnePos[1]) || Object.keys(shipTwo).includes(shipOnePos[2]));
 }
 
 
 generateShipOne()
 generateShipTwo()
-console.log(shipOne)
-console.log(shipTwo)
+console.log("final ship one: ", shipOne)
+console.log("final ship two:", shipTwo)
 
 
 // Make sure the boat is not at the end of the board
