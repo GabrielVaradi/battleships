@@ -1,3 +1,5 @@
+const prompt = require("prompt-sync")();
+
 let shipOne = {
   initialPosition: '',
   secondPosition: '',
@@ -37,6 +39,18 @@ let shipFive = {
 
 let playerOneShips = [];
 let playerTwoShips = [];
+
+let playerOneInfo = {
+  name: 'Bobby Bob',
+  lives: 2
+};
+
+let playerTwoInfo = {
+  name: 'Rich Evans',
+  lives: 2
+};
+
+let shot = ''
 
 
 const generateShipOnePosition = (initialPosition, orientation) => {
@@ -236,7 +250,70 @@ const generatePlayerTwoShips = () => {
   playerTwoShips.push(shipOne, shipTwo, shipThree, shipFour, shipFive)
 }
 
-generatePlayerOneShips()
-generatePlayerTwoShips()
-console.log(playerOneShips)
-console.log(playerTwoShips)
+const playGame = () => {
+  generatePlayerOneShips()
+  generatePlayerTwoShips()
+  console.log(playerOneShips)
+  console.log(playerTwoShips)
+  let shot = prompt("BattleShips! Try to hit the enemy ship by choosing a number between 1 and 49! Press enter to continue ")
+  playerOneTurn()
+}
+
+const playerOneTurn = () => {
+  shot = prompt(`${playerOneInfo.name}, time to shoot!`)
+  for (ship of playerTwoShips) {
+    if (ship[shot]) {
+      console.log(`It's a hit! ${ship} has lost a life`)
+      ship[shot] = false
+      ship.lives -= 1
+      if (ship.lives <= 0) {
+        console.log(`${ship} has been destroyed!`)
+      }
+      playerTwoInfo.lives -= 1
+      if (playerTwoInfo.lives === 0) {
+        console.log(`Game over! ${playerOneInfo.name} wins!`)
+        return;
+      }
+      console.log(playerTwoInfo)
+      playerTwoTurn()
+    }
+  }
+  if (playerOneInfo.lives === 0 || playerTwoInfo.lives === 0) {
+    return;
+  }
+  console.log("Missed")
+  playerTwoTurn()
+  return;
+
+}
+
+const playerTwoTurn = () => {
+  shot = prompt(`${playerTwoInfo.name}, time to shoot!`)
+  for (ship of playerOneShips) {
+    if (ship[shot]) {
+      console.log(`It's a hit! ${ship} has lost a life`)
+      ship[shot] = false
+      ship.lives -= 1
+      if (ship.lives <= 0) {
+        console.log(`${ship} has been destroyed!`)
+      }
+      playerOneInfo.lives -= 1
+      if (playerOneInfo.lives === 0) {
+        console.log(`Game over! ${playerTwoInfo.name} wins!`)
+        return;
+      }
+      console.log(playerOneInfo)
+      playerOneTurn()
+    }
+  }
+  if (playerOneInfo.lives === 0 || playerTwoInfo.lives === 0) {
+    return;
+  }
+  console.log("Missed")
+  playerOneTurn()
+  return;
+}
+
+
+
+playGame()

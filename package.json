@@ -1,0 +1,23 @@
+{
+  "name": "side-projects",
+  "version": "1.0.0",
+  "description": "",
+  "main": "battleships.js",
+  "dependencies": {
+    "prompt-sync": "^4.1.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielVaradi/battleships.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GabrielVaradi/battleships/issues"
+  },
+  "homepage": "https://github.com/GabrielVaradi/battleships#readme"
+}
