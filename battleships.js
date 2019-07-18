@@ -256,6 +256,8 @@ const playGame = () => {
   console.log(playerOneShips)
   console.log(playerTwoShips)
   let shot = prompt("BattleShips! Try to hit the enemy ship by choosing a number between 1 and 49! Press enter to continue ")
+  playerOneInfo.name = prompt("Player 1, please enter your name")
+  playerTwoInfo.name = prompt("Player 2, please enter your name")
   playerOneTurn()
 }
 
