@@ -316,6 +316,4 @@ const playerTwoTurn = () => {
   return;
 }
 
-
-
 playGame()
